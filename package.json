@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "*",
-    "@testing-library/react": "*",
     "@testing-library/user-event": "*",
     "axios": "*",
     "concurrently": "*",
@@ -37,5 +35,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/jest-dom": "^5.16.0",
+    "@testing-library/dom": "^8.0.0",
+    "jest": "^27.0.0"
   }
 }

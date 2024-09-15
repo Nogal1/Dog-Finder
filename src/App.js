@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 import whiskey from './whiskey.jpg'; 
 import duke from './duke.jpg'; 
 import perry from './perry.jpg'; 
+import './App.css';
 
 function App({ dogs }) {
   return (
