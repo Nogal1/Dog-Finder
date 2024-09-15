@@ -1,26 +1,22 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import DogList from "./components/DogList";
-import DogDetails from "./components/DogDetails";
-import Nav from "./components/Nav";
-import whiskey from 'public/whiskey.jpg';
-import duke from 'public/duke.jpg';
-import perry from 'public/perry.jpg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import DogList from './components/DogList';
+import DogDetails from './components/DogDetails';
+import Nav from './components/Nav';
+import whiskey from './whiskey.jpg'; 
+import duke from './duke.jpg'; 
+import perry from './perry.jpg'; 
 
 function App({ dogs }) {
   return (
     <div>
       <Router>
         <Nav dogs={dogs.map(dog => dog.name)} />
-        <Switch>
-          <Route exact path="/dogs">
-            <DogList dogs={dogs} />
-            </Route>
-          <Route path="/dogs.:name">
-            <DogDetails dogs={dogs} />
-            </Route>
-          <Redirect to="/dogs" />    
-        </Switch>
+        <Routes>
+          <Route exact path="/dogs" element={<DogList dogs={dogs} />} />
+          <Route path="/dogs/:name" element={<DogDetails dogs={dogs} />} />
+          <Route path="*" element={<Navigate to="/dogs" />} />
+        </Routes>
       </Router>
     </div>
   );
@@ -43,9 +39,9 @@ App.defaultProps = {
       age: 3,
       src: duke,
       facts: [
-        "To Duke, ball is life.",
-        "Duke loves the snow!",
-        "Duke is super friendly with other dogs :)"
+        "To Duke ball is life.",
+        "Duke loves snow, playing and eating it.",
+        "Duke is great with other dogs :)"
       ]
     },
     {
@@ -53,8 +49,8 @@ App.defaultProps = {
       age: 4,
       src: perry,
       facts: [
-        "Perry adores all people :)",
-        "Perry's title is: Perry the Infinite Snack Destroyer.",
+        "Perry? Perry the platypus?? Oh nevermind.",
+        "Perry's official title is: Perry the Destroyer of Snacks.",
         "Perry hates the rain."
       ]
     },
